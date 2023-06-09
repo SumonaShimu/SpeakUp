@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import './App.css'
 import './index.css'
 import Main from './components/Main';
-import Home from './components/Home';
 import AuthProvider from './components/providers/AuthProvider'
 
 import {
@@ -12,6 +11,7 @@ import {
 } from "react-router-dom";
 import Payment from './Payment/Payment';
 import Login from './components/Login';
+import Home from './components/Home/Home';
 
 
 const router = createBrowserRouter([
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home></Home>
       },
       {
         path: "/login",

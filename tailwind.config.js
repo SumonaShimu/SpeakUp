@@ -8,27 +8,27 @@ export default {
     extend: {},
   },
   daisyui: {
-    themes: [
+    themes: ["light", "dark",
       {
         mytheme: {
 
           "primary": "#ff1f1f",
 
-          "secondary": "#003c72",
+          "secondary": "#4338ca",
 
-          "accent": "#C148AC",
+          "accent": "#bb63f9",
 
-          "neutral": "#021431",
+          "neutral": "#ffffff",
 
-          "base-100": "#FFFFFF",
+          "base-100": "#ffffff",
 
-          "info": "#93E7FB",
+          "info": "#4e8ac6",
 
-          "success": "#81CFD1",
+          "success": "#3edac3",
 
-          "warning": "#EFD7BB",
+          "warning": "#ff7f0f",
 
-          "error": "#E58B8B",
+          "error": "#f03228",
         },
       },
     ],
