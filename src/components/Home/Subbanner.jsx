@@ -15,7 +15,7 @@ const Subbanner = () => {
           effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={5} 
+          slidesPerView={5}
           coverflowEffect={{
             rotate: 50,
             stretch: 0,
@@ -63,7 +63,7 @@ const Subbanner = () => {
             <img src="https://raw.githubusercontent.com/SumonaShimu/Language-images/main/flags/sp.jpg" className="w-40" />
             <h5 className='text-xs font-semibold text-center text-white'>Spanish</h5>
           </SwiperSlide>
-          
+
         </Swiper>
       </div>
     </div>
