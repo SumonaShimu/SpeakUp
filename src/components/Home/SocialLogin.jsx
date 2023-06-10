@@ -13,8 +13,8 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
-                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
-                fetch('https://bistro-boss-server-fawn.vercel.app/users', {
+                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email, photo: loggedInUser.photoURL }
+                fetch('https://speakup-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

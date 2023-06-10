@@ -14,6 +14,7 @@ const RegistrationPage = () => {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm();
 
@@ -52,10 +53,11 @@ const RegistrationPage = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                updateUserProfile(data.username, data.photoUrl = 'https://img.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg')
+                updateUserProfile(data.username, data.photoUrl)
                     .then(() => {
-                        const saveUser = { name: data.username, email: data.email, photo: data.photoUrl }
-                        fetch('https://bistro-boss-server-fawn.vercel.app/users', {
+                        const saveUser = { name: data.username, email: data.email, photo: data.photoUrl, gender:data.gender }
+                        console.log(saveUser)
+                        fetch('https://speakup-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -86,7 +88,12 @@ const RegistrationPage = () => {
         <Parallax bgImage={'https://raw.githubusercontent.com/SumonaShimu/Language-images/main/cloud.jpg'} strength={500}>
             <div className="bg-transparent text-primary w-full py-5 min-h-screen">
                 <form onSubmit={handleSubmit(onSubmit)} className="ps-2 md:ps-10 mb-0">
-                    <h1 className="text-5xl pb-10">Registration</h1>
+                    <h1 className="text-5xl pb-5">Registration</h1>
+                    <p className="text-white text-xs mb-10">
+                        Already have an account? Please <Link to="/login" className="text-primary font-semibold">
+                            Login Here
+                        </Link>
+                    </p>
                     <div>
                         <label htmlFor="username">Username:</label>
                         <input type="text" id="username" name="username" {...register('username', { required: 'Username is required' })} />
@@ -134,13 +141,8 @@ const RegistrationPage = () => {
                             <option value="preferNotToSay">Prefer Not to Say</option>
                         </select>
                     </div>
-                    <p className="text-white">
-                        Already have an account? Please{' '}
-                        <Link to="/login" className="text-primary">
-                            Login Here
-                        </Link>
-                    </p>
-                    <div className="flex flex-col w-full lg:flex-row">
+
+                    <div className="flex flex-col w-full lg:flex-row my-5">
                         <button type="submit" className="btn btn-primary">
                             Register
                         </button>

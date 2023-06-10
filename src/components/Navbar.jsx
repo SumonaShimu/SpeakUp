@@ -7,12 +7,14 @@ import { AuthContext } from './providers/AuthProvider';
 const Navbar = () => {
     const {user,logOut} =useContext(AuthContext);
     const navitems = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/'>Instructors</Link></li>
-        <li><Link to='/'>Classes</Link></li>
+        <li><Link to='/' className='my-auto'>Home</Link></li>
+        <li><Link to='/' className='my-auto'>Instructors</Link></li>
+        <li><Link to='/' className='my-auto'>Classes</Link></li>
+        <img src="" alt="" />
         {user ? <>
-        <li><FcBusinessman className='text-4xl p-0 mx-auto'></FcBusinessman></li>
-        <li><button onClick={logOut} className='btn btn-xs btn-primary m-0 ms-5'>LogOut</button> </li>
+        <li><button onClick={logOut} className='btn btn-xs btn-primary me-5 my-auto'>LogOut</button> </li>
+
+        {user?.photoURL && <li className='flex items-center'><img src={user.photoURL} className="w-16 m-0 p-0 rounded-full" /> </li>||  <li><FcBusinessman className='text-4xl p-0 mx-auto'></FcBusinessman></li>}
         </> : <li><Link to='/login'>Login</Link></li>}
     </>
     return (

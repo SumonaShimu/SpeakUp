@@ -5,10 +5,11 @@ import { Parallax } from 'react-parallax';
 import { AuthContext } from './providers/AuthProvider';
 import Swal from 'sweetalert2';
 import SocialLogin from './Home/SocialLogin';
+import { RxDividerHorizontal, RxDividerVertical } from 'react-icons/rx';
 
 const LoginPage = () => {
     const { register, handleSubmit } = useForm();
-    const {signIn}=useContext(AuthContext)
+    const { signIn } = useContext(AuthContext)
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
     const onSubmit = (data) => {
@@ -23,17 +24,17 @@ const LoginPage = () => {
                     title: 'Registration Successful!',
                     showConfirmButton: false,
                     timer: 1500
-                  })
+                })
                 navigate(from, { replace: true });
             })
     };
 
     return (
-
         <Parallax bgImage={'https://raw.githubusercontent.com/SumonaShimu/Language-images/main/cloud.jpg'} strength={500}>
             <div style={{ height: 500 }}>
                 <form onSubmit={handleSubmit(onSubmit)} className='ps-2 md:ps-10 text-primary'>
-                    <h1 className='text-5xl pb-10'>Please Login</h1>
+                    <h1 className='text-5xl pb-5'>Please Login</h1>
+                    <p className='text-white text-xs mb-10'>Don`t Have an account? Please <Link to="/registration" className='text-primary font-semibold'>Register now!</Link></p>
                     <div>
                         <label htmlFor="email">Email:</label>
                         <input
@@ -52,10 +53,16 @@ const LoginPage = () => {
                             {...register('password', { required: 'Password is required' })}
                         />
                     </div>
-                    <p className='text-white'>Don`t Have an account? please <Link to="/registration" className='text-primary'>Register now!</Link></p>
-                    <button type="submit" className='btn btn-primary block my-5'>Login</button>
+                    
+                    <div className="flex flex-col w-full lg:flex-row my-5">
+                        <button type="submit" className="btn btn-primary">
+                            Login
+                        </button>
+                        <RxDividerVertical className='hidden md:inline text-2xl my-auto mx-2 text-white'></RxDividerVertical>
+                        <RxDividerHorizontal className='md:hidden text-4xl mx-auto text-white'></RxDividerHorizontal>
+                        <SocialLogin />
+                    </div>
                 </form>
-                <SocialLogin></SocialLogin>
             </div>
         </Parallax>
 

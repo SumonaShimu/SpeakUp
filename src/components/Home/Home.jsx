@@ -12,7 +12,6 @@ const Home = () => {
             {/* <Banner></Banner> */}
             <Banner2></Banner2>
             <Subbanner></Subbanner>
-            
             <PopuClass></PopuClass>
             <PopuInstructor></PopuInstructor>
             <Whyus></Whyus>
