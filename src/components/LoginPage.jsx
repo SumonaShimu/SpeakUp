@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import { Background, Parallax } from 'react-parallax';
+import { Link, useNavigate } from 'react-router-dom';
+import { Parallax } from 'react-parallax';
+import { AuthContext } from './providers/AuthProvider';
+import Swal from 'sweetalert2';
+
 const LoginPage = () => {
     const { register, handleSubmit } = useForm();
-
+    const {signIn}=useContext(AuthContext)
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
     const onSubmit = (data) => {
         console.log(data);
         // Perform login logic here
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Registration Successful!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                navigate(from, { replace: true });
+            })
     };
 
     return (
@@ -17,12 +34,12 @@ const LoginPage = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className='ps-2 md:ps-10 text-primary'>
                     <h1 className='text-5xl pb-10'>Please Login</h1>
                     <div>
-                        <label htmlFor="username">Username:</label>
+                        <label htmlFor="email">Email:</label>
                         <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            {...register('username', { required: 'Username is required' })}
+                            type="email"
+                            id="email"
+                            name="email"
+                            {...register('email', { required: 'email is required' })}
                         />
                     </div>
                     <div>

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Parallax } from 'react-parallax';
+import { AuthContext } from './providers/AuthProvider';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const RegistrationPage = () => {
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -15,26 +20,65 @@ const RegistrationPage = () => {
         const { password, confirmPassword } = data;
 
         if (password !== confirmPassword) {
-            console.log('Passwords do not match');
+            toast.error('Passwords do not match');
             return;
         }
 
         if (password.length < 6) {
-            console.log('Password should be at least 6 characters long');
+            toast.error('Password should be at least 6 characters long');
             return;
         }
 
         if (!/[A-Z]/.test(password)) {
-            console.log('Password should contain at least one uppercase letter');
+            toast.error('Password should contain at least one uppercase letter');
             return;
         }
 
         if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) {
-            console.log('Password should contain at least one special character');
+            toast.error('Password should contain at least one special character');
             return;
         }
 
         console.log('OK');
+        createUser(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log('registered user : ',loggedUser);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Registration Successful!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            updateUserProfile(data.username, data.photoUrl='https://img.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg')
+                .then(() => {
+                    const saveUser = { name: data.username, email: data.email, photo: data.photoUrl }
+                    fetch('https://bistro-boss-server-fawn.vercel.app/users', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(saveUser)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                reset();
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'User created successfully.',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                navigate('/');
+                            }
+                        })
+
+                })
+                .catch(error => console.log(error))
+        })
     };
 
     return (

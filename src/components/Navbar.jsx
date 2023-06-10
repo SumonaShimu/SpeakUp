@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { BsClockHistory, BsTelephone } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5";
+import { FcBusinessman } from "react-icons/fc";
+import { AuthContext } from './providers/AuthProvider';
 const Navbar = () => {
+    const {user,logOut} =useContext(AuthContext);
     const navitems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>Instructors</Link></li>
         <li><Link to='/'>Classes</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {user ? <>
+        <li><FcBusinessman className='text-4xl p-0 mx-auto'></FcBusinessman></li>
+        <li><button onClick={logOut} className='btn btn-xs btn-primary m-0 ms-5'>LogOut</button> </li>
+        </> : <li><Link to='/login'>Login</Link></li>}
     </>
     return (
 
