@@ -1,17 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Parallax } from 'react-parallax';
 import { AuthContext } from './providers/AuthProvider';
 import Swal from 'sweetalert2';
 import SocialLogin from './Home/SocialLogin';
-import { RxDividerHorizontal, RxDividerVertical } from 'react-icons/rx';
+import { RxDividerHorizontal, RxDividerVertical, RxEyeClosed, RxEyeOpen } from 'react-icons/rx';
 
 const LoginPage = () => {
+    const [passwordVisible, setPasswordVisible] = useState(false);
     const { register, handleSubmit } = useForm();
     const { signIn } = useContext(AuthContext)
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
+
+    const handleTogglePassword = () => {
+        setPasswordVisible(!passwordVisible);
+    };
+
     const onSubmit = (data) => {
         console.log(data);
         // Perform login logic here
@@ -43,17 +49,22 @@ const LoginPage = () => {
                             name="email"
                             {...register('email', { required: 'email is required' })}
                         />
+                        
                     </div>
                     <div>
                         <label htmlFor="password">Password:</label>
                         <input
-                            type="password"
+                            type={passwordVisible ? 'text' : 'password'}
                             id="password"
                             name="password"
+                            className='inline'
                             {...register('password', { required: 'Password is required' })}
                         />
+                        <button onClick={handleTogglePassword} className='btn btn-sm btn-circle btn-outline p-0 inline ms-[-8%] hover:bg-transparent hover:text-primary shadow-transparent'>
+                            {passwordVisible ? <RxEyeOpen className='h-6 w-6 mx-auto'></RxEyeOpen > : <RxEyeClosed className='h-6 w-6 mx-auto'></RxEyeClosed>}
+                        </button>
                     </div>
-                    
+
                     <div className="flex flex-col w-full lg:flex-row my-5">
                         <button type="submit" className="btn btn-primary">
                             Login

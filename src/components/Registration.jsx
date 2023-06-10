@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Parallax } from 'react-parallax';
@@ -6,7 +6,7 @@ import { AuthContext } from './providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import SocialLogin from './Home/SocialLogin';
-import { RxDividerHorizontal, RxDividerVertical } from "react-icons/rx";
+import { RxDividerHorizontal, RxDividerVertical, RxEyeClosed, RxEyeOpen } from "react-icons/rx";
 const RegistrationPage = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -18,6 +18,12 @@ const RegistrationPage = () => {
         formState: { errors },
     } = useForm();
 
+    // password toggler
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const handleTogglePassword = () => {
+        setPasswordVisible(!passwordVisible);
+    };
+    // Registration form handle
     const onSubmit = (data) => {
         const { password, confirmPassword } = data;
 
@@ -107,17 +113,22 @@ const RegistrationPage = () => {
                             name="email"
                             {...register('email', { required: 'Email is required' })}
                         />
-                        {errors.password && <span>{errors.password.message}</span>}
+                        {errors.email && <span>{errors.email.message}</span>}
                     </div>
                     <div>
                         <label htmlFor="password">Password:</label>
                         <input
-                            type="password"
+                            type={passwordVisible ? 'text' : 'password'}
                             id="password"
                             name="password"
+                            className='inline-block'
                             {...register('password', { required: 'Password is required' })}
                         />
-                        {errors.password && <span>{errors.password.message}</span>}
+                        <button onClick={handleTogglePassword} className='btn btn-sm btn-circle btn-outline p-0 inline ms-[-8%] hover:bg-transparent hover:text-primary shadow-transparent'>
+                            {passwordVisible ? <RxEyeOpen className='h-6 w-6 mx-auto'></RxEyeOpen > : <RxEyeClosed className='h-6 w-6 mx-auto'></RxEyeClosed>}
+                        </button>
+                        {errors.password && <span className='block'>{errors.password.message}</span>}
+                        
                     </div>
                     <div>
                         <label htmlFor="confirmPassword">Confirm Password:</label>
