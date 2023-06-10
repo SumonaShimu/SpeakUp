@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
 
 const Banner = () => {
     const [currentText, setCurrentText] = useState(0);
