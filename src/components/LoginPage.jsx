@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Parallax } from 'react-parallax';
 import { AuthContext } from './providers/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from './Home/SocialLogin';
 
 const LoginPage = () => {
     const { register, handleSubmit } = useForm();
@@ -54,10 +55,9 @@ const LoginPage = () => {
                     <p className='text-white'>Don`t Have an account? please <Link to="/registration" className='text-primary'>Register now!</Link></p>
                     <button type="submit" className='btn btn-primary block my-5'>Login</button>
                 </form>
+                <SocialLogin></SocialLogin>
             </div>
         </Parallax>
-
-
 
     );
 };

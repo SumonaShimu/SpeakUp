@@ -5,7 +5,8 @@ import { Parallax } from 'react-parallax';
 import { AuthContext } from './providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
-
+import SocialLogin from './Home/SocialLogin';
+import { RxDividerHorizontal, RxDividerVertical } from "react-icons/rx";
 const RegistrationPage = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -41,50 +42,50 @@ const RegistrationPage = () => {
 
         console.log('OK');
         createUser(data.email, data.password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log('registered user : ',loggedUser);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Registration Successful!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-            updateUserProfile(data.username, data.photoUrl='https://img.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg')
-                .then(() => {
-                    const saveUser = { name: data.username, email: data.email, photo: data.photoUrl }
-                    fetch('https://bistro-boss-server-fawn.vercel.app/users', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify(saveUser)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.insertedId) {
-                                reset();
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'User created successfully.',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                navigate('/');
-                            }
-                        })
-
+            .then(result => {
+                const loggedUser = result.user;
+                console.log('registered user : ', loggedUser);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Registration Successful!',
+                    showConfirmButton: false,
+                    timer: 1500
                 })
-                .catch(error => console.log(error))
-        })
+                updateUserProfile(data.username, data.photoUrl = 'https://img.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg')
+                    .then(() => {
+                        const saveUser = { name: data.username, email: data.email, photo: data.photoUrl }
+                        fetch('https://bistro-boss-server-fawn.vercel.app/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
+
+                    })
+                    .catch(error => console.log(error))
+            })
     };
 
     return (
         <Parallax bgImage={'https://raw.githubusercontent.com/SumonaShimu/Language-images/main/cloud.jpg'} strength={500}>
             <div className="bg-transparent text-primary w-full py-5 min-h-screen">
-                <form onSubmit={handleSubmit(onSubmit)} className="ps-2 md:ps-10">
+                <form onSubmit={handleSubmit(onSubmit)} className="ps-2 md:ps-10 mb-0">
                     <h1 className="text-5xl pb-10">Registration</h1>
                     <div>
                         <label htmlFor="username">Username:</label>
@@ -137,12 +138,19 @@ const RegistrationPage = () => {
                         Already have an account? Please{' '}
                         <Link to="/login" className="text-primary">
                             Login Here
-                        </Link> 
+                        </Link>
                     </p>
-                    <button type="submit" className="btn btn-primary block my-5">
-                        Register
-                    </button>
+                    <div className="flex flex-col w-full lg:flex-row">
+                        <button type="submit" className="btn btn-primary">
+                            Register
+                        </button>
+                        <RxDividerVertical className='hidden md:inline text-2xl my-auto mx-2 text-white'></RxDividerVertical>
+                        <RxDividerHorizontal className='md:hidden text-4xl mx-auto text-white'></RxDividerHorizontal>
+                        <SocialLogin />
+                    </div>
+
                 </form>
+
             </div>
         </Parallax>
     );

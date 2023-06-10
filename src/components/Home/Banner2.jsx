@@ -67,7 +67,7 @@ const Banner = () => {
               <p className="mb-5">
                 Our experienced instructors will guide you through an immersive
                 language learning journey. From beginner to advanced levels,
-                you'll gain confidence and fluency in the language of your
+                you`ll gain confidence and fluency in the language of your
                 choice, be it English, Spanish, French, German, or Chinese.
               </p>
               <button className="btn btn-primary">Explore Courses</button>
