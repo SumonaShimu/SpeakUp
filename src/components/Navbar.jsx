@@ -8,7 +8,7 @@ const Navbar = () => {
     const {user,logOut} =useContext(AuthContext);
     const navitems = <>
         <li><Link to='/' className='my-auto'>Home</Link></li>
-        <li><Link to='/' className='my-auto'>Instructors</Link></li>
+        <li><Link to='/ins' className='my-auto'>Instructors</Link></li>
         <li><Link to='/' className='my-auto'>Classes</Link></li>
         <img src="" alt="" />
         {user ? <>
