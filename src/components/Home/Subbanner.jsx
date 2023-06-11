@@ -9,8 +9,8 @@ import { EffectCoverflow, Pagination } from "swiper";
 
 const Subbanner = () => {
   return (
-    <div className="flex justify-center items-center ">
-      <div className="w-2/3 md:w-2/5 bg-sky-950 mt-[-50px] p-5 rounded-xl">
+    <div className="relative flex justify-center items-center ">
+      <div className="w-2/3 md:w-2/5 bg-sky-950 mt-[-100px] p-5 rounded-xl">
         <Swiper
           effect={"coverflow"}
           grabCursor={true}

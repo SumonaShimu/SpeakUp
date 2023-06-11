@@ -1,100 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-fade';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Navigation, Pagination } from 'swiper';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
-const Banner = () => {
-  const [currentText, setCurrentText] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setCurrentText((prevText) => (prevText + 1) % 3);
-    }, 4000);
-
-    return () => clearTimeout(timer);
-  }, [currentText]);
-
+const Banner2 = () => {
   return (
-    <div
-      className="hero min-h-screen"
-      style={{
-        backgroundImage:
-          'url(https://raw.githubusercontent.com/SumonaShimu/Language-images/main/banner.jpg)',
-      }}
-    >
-      <div className="hero-overlay bg-black bg-opacity-50"></div>
-      <div className="hero-content text-center text-white">
-        <Swiper
-          spaceBetween={10}
-          effect={'fade'}
-          navigation={true}
-          modules={[EffectFade, Navigation]}
-          className="mySwiper"
-          onSlideChange={(swiper) => {
-            setCurrentText(swiper.activeIndex);
-          }}
-        >
-          <SwiperSlide>
-            <div
-              className={`w-full mx-auto max-w-md banner-text ${
-                currentText !== 0 ? 'hidden' : ''
-              }`}
-            >
-              <h1 className="mb-5 text-3xl md:text-5xl font-bold">
-                Learn Languages and Make Lifelong Friends
-              </h1>
-              <p className="mb-5">
-                Immerse yourself in a vibrant and diverse learning environment.
-                Discover new cultures, improve your language skills, and create
-                unforgettable memories with fellow language enthusiasts from
-                around the world.
-              </p>
-              <button className="btn btn-primary">Join Now</button>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className={`w-full mx-auto  max-w-md banner-text ${
-                currentText !== 1 ? 'hidden' : ''
-              }`}
-            >
-              <h1 className="mb-5 text-3xl md:text-5xl font-bold">
-                Unlock Your Language Potential
-              </h1>
-              <p className="mb-5">
-                Our experienced instructors will guide you through an immersive
-                language learning journey. From beginner to advanced levels,
-                you`ll gain confidence and fluency in the language of your
-                choice, be it English, Spanish, French, German, or Chinese.
-              </p>
-              <button className="btn btn-primary">Explore Courses</button>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className={`w-full mx-auto max-w-md banner-text ${
-                currentText !== 2 ? 'hidden' : ''
-              }`}
-            >
-              <h1 className="mb-5 text-3xl md:text-5xl font-bold">
-                Experience an Unforgettable Summer
-              </h1>
-              <p className="mb-5">
-                Join our language learning summer camp and enjoy a fun-filled
-                adventure. Engage in exciting activities, cultural
-                celebrations, and language exchange events. Create memories,
-                forge friendships, and broaden your horizons this summer.
-              </p>
-              <button className="btn btn-primary">Learn More</button>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+    <Carousel autoPlay={true} interval={2000} infiniteLoop={true}>
+      {/* slide 1 */}
+      <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://raw.githubusercontent.com/SumonaShimu/Language-images/main/4.jpg)' }}>
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content text-center text-neutral-content">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <button className="btn btn-primary">Get Started</button>
+          </div>
+        </div>
       </div>
-    </div>
+      {/* slide 2 */}
+      <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://raw.githubusercontent.com/SumonaShimu/Language-images/main/banner.jpg)' }}>
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content text-center text-neutral-content">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <button className="btn btn-primary">Get Started</button>
+          </div>
+        </div>
+      </div>
+      {/* slide 3 */}
+      <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://raw.githubusercontent.com/SumonaShimu/Language-images/main/banner.jpg)' }}>
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content text-center text-neutral-content">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <button className="btn btn-primary">Get Started</button>
+          </div>
+        </div>
+      </div>
+    </Carousel>
   );
 };
 
-export default Banner;
+export default Banner2;
