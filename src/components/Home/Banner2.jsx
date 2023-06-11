@@ -8,8 +8,8 @@ const Banner2 = () => {
     <Carousel autoPlay={true} interval={2000} infiniteLoop={true}>
       {/* slide 1 */}
       <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://raw.githubusercontent.com/SumonaShimu/Language-images/main/4.jpg)' }}>
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
+        <div className="hero-overlay bg-black bg-opacity-40"></div>
+        <div className="hero-content text-center text-neutral-content text-white">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
             <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
@@ -18,9 +18,9 @@ const Banner2 = () => {
         </div>
       </div>
       {/* slide 2 */}
-      <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://raw.githubusercontent.com/SumonaShimu/Language-images/main/banner.jpg)' }}>
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
+      <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://raw.githubusercontent.com/SumonaShimu/Language-images/main/banner3.png)' }}>
+        <div className="hero-overlay bg-black bg-opacity-40"></div>
+        <div className="hero-content text-center text-neutral-content text-white">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
             <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
@@ -30,8 +30,8 @@ const Banner2 = () => {
       </div>
       {/* slide 3 */}
       <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://raw.githubusercontent.com/SumonaShimu/Language-images/main/banner.jpg)' }}>
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
+        <div className="hero-overlay bg-black bg-opacity-40"></div>
+        <div className="hero-content text-center text-neutral-content text-white">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
             <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
