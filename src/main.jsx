@@ -15,8 +15,9 @@ import Registration from './components/Registration';
 import LoginPage from './components/LoginPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Instructors from './components/Instructors';
+import Instructors from './Pages/Instructors';
 import Error from './Pages/Error';
+import Classes from './Pages/Classes';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/ins",
         element: <Instructors></Instructors>,
+      },
+      {
+        path: "/classes",
+        element: <Classes></Classes>,
       },
       {
         path: "/registration",

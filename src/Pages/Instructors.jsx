@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Headings from './Headings';
-import useAxiosSecure from './hooks/useAxiosSecure';
+import Headings from '../components/Headings';
+import useAxiosSecure from '../components/hooks/useAxiosSecure';
 
 const Instructors = () => {
     const [axiosSecure] = useAxiosSecure();

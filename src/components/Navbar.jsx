@@ -9,7 +9,7 @@ const Navbar = () => {
     const navitems = <>
         <li><Link to='/' className='my-auto'>Home</Link></li>
         <li><Link to='/ins' className='my-auto'>Instructors</Link></li>
-        <li><Link to='/' className='my-auto'>Classes</Link></li>
+        <li><Link to='/classes' className='my-auto'>Classes</Link></li>
         <img src="" alt="" />
         {user ? <>
         <li><button onClick={logOut} className='btn btn-xs btn-primary me-5 my-auto'>LogOut</button> </li>
