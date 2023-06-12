@@ -4,6 +4,8 @@ import { BsClockHistory, BsTelephone } from "react-icons/bs";
 import { IoLocationOutline } from "react-icons/io5";
 import { FcBusinessman } from "react-icons/fc";
 import { AuthContext } from './providers/AuthProvider';
+import { TbDotsVertical } from "react-icons/tb";
+
 const Navbar = () => {
     const {user,logOut} =useContext(AuthContext);
     const navitems = <>
@@ -11,11 +13,15 @@ const Navbar = () => {
         <li><Link to='/ins' className='my-auto'>Instructors</Link></li>
         <li><Link to='/classes' className='my-auto'>Classes</Link></li>
         <img src="" alt="" />
-        {user ? <>
+        {
+        user ? <>
         <li><button onClick={logOut} className='btn btn-xs btn-primary me-5 my-auto'>LogOut</button> </li>
-
         {user?.photoURL && <li className='flex items-center'><img src={user.photoURL} className="w-16 m-0 p-0 rounded-full" /> </li>||  <li><FcBusinessman className='text-4xl p-0 mx-auto'></FcBusinessman></li>}
-        </> : <li><Link to='/login'>Login</Link></li>}
+        
+        <li><Link to='/dashboard' className='my-auto rounded-full p-3 ms-3'><TbDotsVertical className='text-2xl'></TbDotsVertical></Link></li>
+        
+        </> : <li><Link to='/login'>Login</Link></li>
+        }
     </>
     return (
 
@@ -32,7 +38,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <img src="logo.png" className="w-14" />
-                    <a className="btn btn-ghost normal-case text-3xl text-primary">SpeakUp</a>
+                    <a className="btn btn-ghost normal-case text-3xl text-primary" href='/'>SpeakUp</a>
 
                 </div>
                 <div className="navbar-end hidden md:flex px-5">

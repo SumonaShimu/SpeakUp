@@ -18,6 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Instructors from './Pages/Instructors';
 import Error from './Pages/Error';
 import Classes from './Pages/Classes';
+import Dashboard from './dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,14 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path:'*',
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      
+    ]
+  },
+  {
+    path: '*',
     element: <Error></Error>
   }
 ]);
@@ -59,8 +67,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <ToastContainer/>
-    <RouterProvider router={router} />
+      <ToastContainer />
+      <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>,
 )
