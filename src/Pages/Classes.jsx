@@ -3,6 +3,7 @@ import useAxiosSecure from '../components/hooks/useAxiosSecure';
 import Headings from '../components/Headings';
 import { AuthContext } from '../components/providers/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Classes = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -41,7 +42,16 @@ const Classes = () => {
     const navigate=useNavigate();
     const handleSelect=()=>{
         if(user) navigate('/')
-        else navigate('/login')
+        else {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'You need to Login first!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            navigate('/login')
+        }
     }
     return (
        
@@ -62,7 +72,7 @@ const Classes = () => {
                                 <h2 className="text-lg">Price: ${item.price}</h2>
                                 
                                 <div className="card-actions lg:justify-end">
-                                    <button className={`btn ${item.availableSeats>0&&user&&role==='user'?'btn-primary':'btn-disabled text-primary'}`} onClick={handleSelect}>Select</button>
+                                    <button className={`btn ${item.availableSeats==0&&role!=='user'?'btn-disabled text-primary':'btn-primary'}`} onClick={handleSelect}>Select</button>
                                 </div>
                             </div>
                         </div>
