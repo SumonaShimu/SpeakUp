@@ -7,7 +7,9 @@ import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import SocialLogin from './Home/SocialLogin';
 import { RxDividerHorizontal, RxDividerVertical, RxEyeClosed, RxEyeOpen } from "react-icons/rx";
+
 const RegistrationPage = () => {
+    var i=13;
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const {
@@ -61,7 +63,7 @@ const RegistrationPage = () => {
                 })
                 updateUserProfile(data.username, data.photoUrl)
                     .then(() => {
-                        const saveUser = { name: data.username, email: data.email, photo: data.photoUrl, gender:data.gender }
+                        const saveUser = { id:++i, name: data.username, email: data.email, photo: data.photoUrl, gender:data.gender , role:'user'}
                         console.log(saveUser)
                         fetch('https://speakup-server.vercel.app/users', {
                             method: 'POST',
@@ -86,8 +88,11 @@ const RegistrationPage = () => {
                             })
 
                     })
-                    .catch(error => console.log(error))
+                    .catch(error => toast.error('Update user error: ',error))
             })
+            .catch((error) => { 
+                toast.error(`create user error : ${error.message}`)
+              });
     };
 
     return (

@@ -2,6 +2,7 @@ import { FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const SocialLogin = () => {
     const { googleSignIn } = useContext(AuthContext);
@@ -13,7 +14,7 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
-                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email, photo: loggedInUser.photoURL }
+                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email, photo: loggedInUser.photoURL, role: 'user' }
                 fetch('https://speakup-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
@@ -26,6 +27,9 @@ const SocialLogin = () => {
                         navigate(from, { replace: true });
                     })
             })
+            .catch((error) => {
+                toast(error.message)
+              });
     }
 
     return (
