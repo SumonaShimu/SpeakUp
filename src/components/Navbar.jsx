@@ -18,7 +18,7 @@ const Navbar = () => {
         <li><button onClick={logOut} className='btn btn-xs btn-primary me-5 my-auto'>LogOut</button> </li>
         {user?.photoURL && <li className='flex items-center'><img src={user.photoURL} className="w-16 m-0 p-0 rounded-full" /> </li>||  <li><FcBusinessman className='text-4xl p-0 mx-auto'></FcBusinessman></li>}
         
-        <li><Link to='/dashboard' className='my-auto rounded-full p-3 ms-3'><TbDotsVertical className='text-2xl'></TbDotsVertical></Link></li>
+        <li><Link to='/dashboard' className='my-auto rounded-full p-3 md:ms-3 mx-auto'><TbDotsVertical className='text-2xl text-center'></TbDotsVertical></Link></li>
         
         </> : <li><Link to='/login'>Login</Link></li>
         }
@@ -29,11 +29,11 @@ const Navbar = () => {
             {/* navbar */}
             <div className="navbar mx-auto">
                 <div className="navbar-start">
-                    <div className="dropdown">
+                    <div className="dropdown ">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box w-52 z-10">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow w-52 z-10 bg-base-100">
                             {navitems}
                         </ul>
                     </div>
