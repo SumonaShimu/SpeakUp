@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
+
 
 const Main = () => {
     return (
         <div className='w-full bg-base-100 m-0 p-0'>
-           <Navbar></Navbar>
+            <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>

@@ -2,13 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './App.css'
 import './index.css'
-import Main from './components/Main';
-import AuthProvider from './components/providers/AuthProvider'
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import AuthProvider from './components/providers/AuthProvider'
 import Payment from './Payment/Payment';
 import Home from './components/Home/Home';
 import Registration from './components/Registration';
@@ -18,7 +13,22 @@ import 'react-toastify/dist/ReactToastify.css';
 import Instructors from './Pages/Instructors';
 import Error from './Pages/Error';
 import Classes from './Pages/Classes';
-import Dashboard from './dashboard/Dashboard';
+
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Dashboard from './components/layout/Dashboard'
+import Main from './components/layout/Main'
+import SelectedClass from './dashboard/SelectedClass'
+import PrivateRoute from './components/route/PrivateRoute'
+import EnrolledClasses from './dashboard/EnrolledClasses'
+import PaymentHistory from './dashboard/PaymentHistory'
+import Addclass from './dashboard/Addclass'
+import Myclasses from './dashboard/Myclasses'
+import ManageClass from './dashboard/ManageClass'
+import ManageUsers from './dashboard/ManageUsers'
 
 const router = createBrowserRouter([
   {
@@ -52,10 +62,37 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/dashboard',
+    path: 'dashboard',
     element: <Dashboard></Dashboard>,
     children: [
-      
+      {
+        path:'selected',
+        element:<SelectedClass></SelectedClass>
+      },
+      {
+        path:'enrolled',
+        element:<EnrolledClasses></EnrolledClasses>
+      },
+      {
+        path:'payment-history',
+        element:<PaymentHistory></PaymentHistory>
+      },
+      {
+        path:'addclass',
+        element:<Addclass></Addclass>
+      },
+      {
+        path:'myclasses',
+        element:<Myclasses></Myclasses>
+      },
+      {
+        path:'manage-class',
+        element:<ManageClass></ManageClass>
+      },
+      {
+        path:'manage-users',
+        element:<ManageUsers></ManageUsers>
+      },
     ]
   },
   {

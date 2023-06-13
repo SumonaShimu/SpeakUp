@@ -1,17 +1,17 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import useRole from '../components/hooks/useRole';
-import Headings from '../components/Headings';
+import { NavLink, Outlet } from 'react-router-dom';
+import useRole from '../hooks/useRole';
+import Headings from '../Headings';
 
 const Dashboard = () => {
     const { role } = useRole();
 
     return (
-        <div className="drawer lg:drawer-open">
+        <div className="drawer lg:drawer-open min-h-screen">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
-                <Outlet></Outlet>
+            <div className="drawer-content">
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <Outlet></Outlet>
 
             </div>
             <div className="drawer-side">
@@ -21,21 +21,21 @@ const Dashboard = () => {
                     {/* Sidebar content here */}
                     {
                         (role === 'user') && <>
-                        <li><a>My selected classes</a></li>
-                        <li><a>Enrolled classes</a></li>
-                        <li><a>Payment history</a></li>
+                        <li><NavLink to='/dashboard/selected'>My selected classes</NavLink></li>
+                        <li><NavLink to='/dashboard/enrolled'>Enrolled classes</NavLink></li>
+                        <li><NavLink to='/dashboard/payment-history'>Payment history</NavLink></li>
                         </>
                     }
                     {
                         (role === 'instructor') && <>
-                        <li><a>Add a class</a></li>
-                        <li><a>My classes</a></li>
+                        <li><NavLink to='/dashboard/addclass'>Add a class</NavLink></li>
+                        <li><NavLink to='/dashboard/myclasses'>My classes</NavLink></li>
                         </>
                     }
                     {
                         (role === 'admin') && <>
-                        <li><a>Manage classes</a></li>
-                        <li><a>Manage users</a></li>
+                        <li><NavLink to='/dashboard/manage-class'>Manage classes</NavLink></li>
+                        <li><NavLink to='/dashboard/manage-users'>Manage users</NavLink></li>
                         
                         </>
                     }
