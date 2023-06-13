@@ -22,12 +22,12 @@ const Instructors = () => {
     const instructors = users.filter(user => user.role === 'instructor')
 
     return (
-        <div className='min-h-screen pb-10 bg-base-100'>
+        <div className='min-h-screen pb-10'>
             <Headings title={'All Instructors'} sub={'See all of our heros'}></Headings>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-2 lg:gap-4 mx-auto">
 
                 {instructors.map((item) => (
-                    <div key={item._id} className="card card-side flex-col lg:flex-row bg-base-100 shadow-xl">
+                    <div key={item._id} className="card card-side flex-col lg:flex-row shadow-xl">
                         <img src={item.photo} className="block w-40 h-40 rounded-xl m-5" />
                         <div className="card-body w-1/2 flex">
 

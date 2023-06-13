@@ -5,3 +5,16 @@
 a:hover{
   color: #ff1f1f!important;
 }
+.control-arrow{
+  margin: auto 0 !important;
+}
+.maxw{
+  max-width: 80% !important;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .maxw{
+    max-width: 90% !important;
+  }
+}

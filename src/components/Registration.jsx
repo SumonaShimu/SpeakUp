@@ -97,11 +97,11 @@ const RegistrationPage = () => {
 
     return (
         <Parallax bgImage={'https://raw.githubusercontent.com/SumonaShimu/Language-images/main/cloud.jpg'} strength={500}>
-            <div className="bg-transparent text-primary w-full py-5 min-h-screen">
+            <div className="bg-transparent text-white w-full py-5 min-h-screen">
                 <form onSubmit={handleSubmit(onSubmit)} className="ps-2 md:ps-10 mb-0">
                     <h1 className="text-5xl pb-5">Registration</h1>
                     <p className="text-white text-xs mb-10">
-                        Already have an account? Please <Link to="/login" className="text-primary font-semibold">
+                        Already have an account? Please <Link to="/login" className="text-white font-semibold underline">
                             Login Here
                         </Link>
                     </p>

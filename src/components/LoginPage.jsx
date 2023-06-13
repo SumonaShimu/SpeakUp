@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Parallax } from 'react-parallax';
 import { AuthContext } from './providers/AuthProvider';
 import Swal from 'sweetalert2';
@@ -11,9 +11,12 @@ const LoginPage = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const { register, handleSubmit } = useForm();
     const { signIn } = useContext(AuthContext)
+    
     const navigate = useNavigate();
+    const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-
+    console.log('login page: ',from)
+    
     const handleTogglePassword = () => {
         setPasswordVisible(!passwordVisible);
     };
@@ -27,7 +30,7 @@ const LoginPage = () => {
                 console.log(user);
                 Swal.fire({
                     icon: 'success',
-                    title: 'Registration Successful!',
+                    title: 'Login Successful!',
                     showConfirmButton: false,
                     timer: 1500
                 })
@@ -38,9 +41,9 @@ const LoginPage = () => {
     return (
         <Parallax bgImage={'https://raw.githubusercontent.com/SumonaShimu/Language-images/main/cloud.jpg'} strength={500}>
             <div style={{ height: 500 }}>
-                <form onSubmit={handleSubmit(onSubmit)} className='ps-2 md:ps-10 text-primary'>
+                <form onSubmit={handleSubmit(onSubmit)} className='ps-2 md:ps-10 text-white'>
                     <h1 className='text-5xl pb-5'>Please Login</h1>
-                    <p className='text-white text-xs mb-10'>Don`t Have an account? Please <Link to="/registration" className='text-primary font-semibold'>Register now!</Link></p>
+                    <p className='text-white text-xs mb-10'>Don`t Have an account? Please <Link to="/registration" className='text-white font-semibold underline'>Register now!</Link></p>
                     <div>
                         <label htmlFor="email">Email:</label>
                         <input

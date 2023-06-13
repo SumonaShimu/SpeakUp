@@ -8,7 +8,7 @@ import Banner2 from './Banner2';
 
 const Home = () => {
     return (
-        <div className='px-5 bg-base-100'>
+        <div className=''>
             {/* <Banner></Banner> */}
             <Banner2></Banner2>
             <Subbanner></Subbanner>

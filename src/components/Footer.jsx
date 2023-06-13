@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-base-100 text-base-content justify-evenly">
+            <footer className="footer p-10 text-base-content justify-evenly">
                 <div>
                     <span className="footer-title text-secondary hover:text-primary">Services</span>
                     <a className="link link-hover">Branding</a>
@@ -37,7 +37,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
-            <footer className="footer px-10 py-4 border-t bg-base-100 text-base-content border-base-300">
+            <footer className="footer px-10 py-4 border-t text-base-content border-base-300">
                 <div className="items-center grid-flow-col">
                     <img src="logo.png" alt="" className='w-14' />
                     <p>SpeakUp Language School <br />Providing reliable service since 1992</p>

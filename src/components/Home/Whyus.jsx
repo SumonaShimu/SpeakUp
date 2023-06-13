@@ -5,9 +5,9 @@ import { BsCupHot, BsEnvelopePlus, BsHandThumbsUp, BsRocket, BsTrophy } from "re
 import Headings from '../Headings';
 const Whyus = () => {
     return (
-        <div className='min-h-screen'>
+        <div className='min-h-screen maxw py-10'>
             <Headings title={'Why Choose Us'} sub={'Some simple reasons'}></Headings>
-            <div className='grid grid-cols-1 md:grid-cols-3 md:w-[80%] mx-auto'>
+            <div className='grid grid-cols-1 md:grid-cols-3 my-10'>
             <div className=''>
                 <Why title={'Over 20 Years of Experience'} desc={'In 2000 our centre became an academic department within the school of languages.'} icon={BsEnvelopePlus}></Why>
                 <Why title={'Exclusive Learning Materials'} desc={'Our learning materials include text with multimedia on all areas of the curriculum.'} icon={BsRocket}></Why>

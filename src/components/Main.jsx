@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 const Main = () => {
     return (
-        <div className='w-full bg-slate-950 m-0 p-0'>
+        <div className='w-full bg-base-100 m-0 p-0'>
            <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
