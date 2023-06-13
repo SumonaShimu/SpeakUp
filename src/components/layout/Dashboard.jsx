@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import useRole from '../hooks/useRole';
 import Headings from '../Headings';
+import { AuthContext } from '../providers/AuthProvider';
 
 const Dashboard = () => {
     const { role } = useRole();
-
+    const { user, logOut } = useContext(AuthContext)
     return (
         <div className="drawer lg:drawer-open min-h-screen">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -17,6 +18,7 @@ const Dashboard = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay m-0"></label>
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                    {user?.photoURL && <li className='flex items-center'><img src={user.photoURL} className="w-16 m-0 p-0 rounded-full" /> </li>}
                     <Headings title={`${role}`} sub={'Dashboard'}></Headings>
                     {/* Sidebar content here */}
                     {
@@ -43,6 +45,7 @@ const Dashboard = () => {
                     <li><NavLink to='/' className='my-auto'>Home</NavLink></li>
                     <li><NavLink to='/ins' className='my-auto'>Instructors</NavLink></li>
                     <li><NavLink to='/classes' className='my-auto'>Classes</NavLink></li>
+                    <li><button onClick={logOut} className='btn btn-xs btn-primary me-5 my-auto'>LogOut</button> </li>
 
                 </ul>
 

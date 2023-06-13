@@ -17,4 +17,8 @@ a:hover{
   .maxw{
     max-width: 90% !important;
   }
+  .rowDefault{
+    flex-direction: row;
+    text-align: left;
+  }
 }

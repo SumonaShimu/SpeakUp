@@ -5,13 +5,16 @@ import { AuthContext } from '../components/providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useRole from '../components/hooks/useRole';
+import useCart from '../components/hooks/useCart';
+import { toast } from 'react-toastify';
+import usePayments from '../components/hooks/usePayments';
 
 const Classes = () => {
     const [axiosSecure] = useAxiosSecure();
     const [classes, setClasses] = useState([]);
     const { user } = useContext(AuthContext)
     console.log('from classes', user)
-
+    const [cart]=useCart();
     const location = useLocation()
     const navigate = useNavigate();
     console.log(location)
@@ -33,10 +36,24 @@ const Classes = () => {
 
     const approvedClasses = classes.filter(item => item.status === 'approved')
     console.log(approvedClasses, role)
-
+    
+    const [payments] = usePayments();
     const handleSelect = item => {
         console.log('from handle',item);
         const {_id,name,price,img}=item;
+        
+        //handle duplicate select
+       const alreadySelected=cart.find(cartItem=>cartItem.classId===item._id)
+        if(alreadySelected) {
+            toast('The class id already selected')
+            return;
+        }
+        //handle duplicate enrollment
+        const isPaid = payments.map(payment => payment.classId === item.classId)
+        if (isPaid) {
+            toast('This class is already enrolled!')
+            return;
+        }
         if (user && user.email) {
             const cartItem = {
                 classId:_id,
@@ -72,7 +89,6 @@ const Classes = () => {
                 title: 'Please login to order the food',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#af1',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Login!'
             }).then((result) => {
@@ -101,7 +117,7 @@ const Classes = () => {
                                 <h2 className="text-lg">Price: ${item.price}</h2>
 
                                 <div className="card-actions lg:justify-end">
-                                    <button className={`btn ${item.availableSeats === 0 || role !== 'user' ? 'btn-disabled text-primary' : 'btn-primary'}`} onClick={()=>handleSelect(item)}>Select</button>
+                                    <button className={`btn ${item.availableSeats === 0 || (role && role !== 'user') ? 'btn-disabled text-primary' : 'btn-primary'}`} onClick={()=>handleSelect(item)}>Select</button>
                                 </div>
                             </div>
                         </div>

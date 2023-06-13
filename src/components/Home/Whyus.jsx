@@ -13,8 +13,8 @@ const Whyus = () => {
                 <Why title={'Exclusive Learning Materials'} desc={'Our learning materials include text with multimedia on all areas of the curriculum.'} icon={BsRocket}></Why>
                 <Why title={'Career Upgrade'} desc={'Learning a new language is a fascinating thing that can lead to great opportunities.'} icon={BsTrophy}></Why>
             </div>
-            <div className='hidden md:block'>
-                <img src="https://i.ibb.co/F34Pzs9/boy-student-with-his-bag-pack-and-book-back-to-school-clipart-removebg-preview.png" alt="" />
+            <div className='hidden md:flex items-center'>
+                <img src="https://i.ibb.co/dWZwYQB/images-removebg-preview.png" className="mx-auto" />
             </div>
             <div className='text-right'>
                 <Why title={'Over 20 Years of Experience'} desc={'In 2000 our centre became an academic department within the school of languages.'} icon={FaUserGraduate} right={true}></Why>
