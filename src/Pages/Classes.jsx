@@ -13,7 +13,9 @@ const Classes = () => {
     console.log('from classes', user)
 
     const location = useLocation()
+    const navigate = useNavigate();
     console.log(location)
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -27,23 +29,57 @@ const Classes = () => {
 
     }, [axiosSecure, user]);
 
-    const {role}=useRole();
+    const { role } = useRole();
 
     const approvedClasses = classes.filter(item => item.status === 'approved')
-    console.log(approvedClasses,role)
+    console.log(approvedClasses, role)
 
-    const navigate = useNavigate();
-    const handleSelect = () => {
-        if (user) navigate('/')
+    const handleSelect = item => {
+        console.log('from handle',item);
+        const {_id,name,price,img}=item;
+        if (user && user.email) {
+            const cartItem = {
+                classId:_id,
+                name,
+                img,
+                price,
+                email: user.email
+            };
+
+            axiosSecure.post('https://speakup-server.vercel.app/carts', cartItem, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    const data = response.data;
+                    if (data.insertedId) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Class selected!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error posting class to cart:', error);
+                });
+        }
         else {
             Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'You need to Login first!',
-                showConfirmButton: false,
-                timer: 1500
+                title: 'Please login to order the food',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#af1',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
             })
-            navigate('/login', { state: { from: location } })
         }
     }
     return (
@@ -65,7 +101,7 @@ const Classes = () => {
                                 <h2 className="text-lg">Price: ${item.price}</h2>
 
                                 <div className="card-actions lg:justify-end">
-                                    <button className={`btn ${item.availableSeats === 0 || role !== 'user' ? 'btn-disabled text-primary' : 'btn-primary'}`} onClick={handleSelect}>Select</button>
+                                    <button className={`btn ${item.availableSeats === 0 || role !== 'user' ? 'btn-disabled text-primary' : 'btn-primary'}`} onClick={()=>handleSelect(item)}>Select</button>
                                 </div>
                             </div>
                         </div>

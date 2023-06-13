@@ -3,12 +3,11 @@ import { useContext, useEffect } from "react";
 import { useState } from "react";
 import useAxiosSecure from "./../components/hooks/useAxiosSecure";
 import './CheckoutForm.css'
-import useAuth from "../components/hooks/useAuth";
 import { AuthContext } from "../components/providers/AuthProvider";
 
 
-const CheckoutForm = () => {
-    const price=20.5;
+const CheckoutForm = ({ classId, price, name }) => {
+    //const price=20.5;
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useContext(AuthContext);
@@ -83,8 +82,10 @@ const CheckoutForm = () => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
+                classId,
+                class:name,
                 date: new Date(),
-                status: 'service pending',
+                status: 'paid',
                 //item details
             }
             axiosSecure.post('/payments', payment)

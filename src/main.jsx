@@ -2,9 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './App.css'
 import './index.css'
-
 import AuthProvider from './components/providers/AuthProvider'
-import Payment from './Payment/Payment';
 import Home from './components/Home/Home';
 import Registration from './components/Registration';
 import LoginPage from './components/LoginPage';
@@ -13,8 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Instructors from './Pages/Instructors';
 import Error from './Pages/Error';
 import Classes from './Pages/Classes';
-
-
 import {
   createBrowserRouter,
   RouterProvider,
@@ -29,6 +25,14 @@ import Addclass from './dashboard/Addclass'
 import Myclasses from './dashboard/Myclasses'
 import ManageClass from './dashboard/ManageClass'
 import ManageUsers from './dashboard/ManageUsers'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import Payment from './Payment/Payment'
+
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -55,10 +59,6 @@ const router = createBrowserRouter([
         path: "/registration",
         element: <Registration></Registration>
       },
-      {
-        path: "/pay",
-        element: <Payment></Payment>
-      },
     ],
   },
   {
@@ -66,32 +66,37 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path:'selected',
-        element:<SelectedClass></SelectedClass>
+        path: 'selected',
+        element: <SelectedClass></SelectedClass>
       },
       {
-        path:'enrolled',
-        element:<EnrolledClasses></EnrolledClasses>
+        path: 'enrolled',
+        element: <EnrolledClasses></EnrolledClasses>
       },
       {
-        path:'payment-history',
-        element:<PaymentHistory></PaymentHistory>
+        path: 'payment-history',
+        element: <PaymentHistory></PaymentHistory>
       },
       {
-        path:'addclass',
-        element:<Addclass></Addclass>
+        path: 'addclass',
+        element: <Addclass></Addclass>
       },
       {
-        path:'myclasses',
-        element:<Myclasses></Myclasses>
+        path: 'myclasses',
+        element: <Myclasses></Myclasses>
       },
       {
-        path:'manage-class',
-        element:<ManageClass></ManageClass>
+        path: 'manage-class',
+        element: <ManageClass></ManageClass>
       },
       {
-        path:'manage-users',
-        element:<ManageUsers></ManageUsers>
+        path: 'manage-users',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path: "payment",
+        element:<Payment></Payment>
+        
       },
     ]
   },
@@ -104,8 +109,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <ToastContainer />
-      <RouterProvider router={router} />
+      <ToastContainer></ToastContainer>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </AuthProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
