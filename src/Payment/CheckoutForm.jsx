@@ -104,7 +104,7 @@ const CheckoutForm = (item) => {
                 .then(res => {
                     console.log('deleted res', res.data);
                     if (res.data.deletedCount > 0) {
-                        refetch();
+            
                         Swal.fire(
                             'Deleted!',
                             'from cart',
