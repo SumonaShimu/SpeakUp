@@ -16,8 +16,7 @@ const EnrolledClasses = () => {
                             </th>
                             <th>Course</th>
                             <th>Price</th>
-                            <th>Date</th>
-                            <th>Transaction Id</th>
+                         
                         </tr>
                     </thead>
                     <tbody>
@@ -30,12 +29,6 @@ const EnrolledClasses = () => {
                                 <td>{item.class}</td>
                                 <td>
                                     ${item.price}
-                                </td>
-                                <td>
-                                    ${item.date}
-                                </td>
-                                <td>
-                                    ${item.transactionId}
                                 </td>
                             </tr>
                         )

@@ -30,6 +30,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import Payment from './Payment/Payment'
+import DashboardHome from './dashboard/DashboardHome'
 
 
 const queryClient = new QueryClient()
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
     path: 'dashboard',
     element: <Dashboard></Dashboard>,
     children: [
+      {
+        path: '',
+        element: <DashboardHome></DashboardHome>
+      },
       {
         path: 'selected',
         element: <SelectedClass></SelectedClass>

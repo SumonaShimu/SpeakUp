@@ -13,7 +13,6 @@ const Dashboard = () => {
             <div className="drawer-content">
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                 <Outlet></Outlet>
-
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay m-0"></label>
@@ -45,7 +44,6 @@ const Dashboard = () => {
                     <li><NavLink to='/' className='my-auto'>Home</NavLink></li>
                     <li><NavLink to='/ins' className='my-auto'>Instructors</NavLink></li>
                     <li><NavLink to='/classes' className='my-auto'>Classes</NavLink></li>
-                    <li><button onClick={logOut} className='btn btn-xs btn-primary me-5 my-auto'>LogOut</button> </li>
 
                 </ul>
 
