@@ -129,7 +129,7 @@ const CheckoutForm = (item) => {
 
     return (
         <>
-            <form className="w-full m-8" onSubmit={handleSubmit}>
+            <form className="maxw" onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {

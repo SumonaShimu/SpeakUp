@@ -35,7 +35,7 @@ const PopuClass = () => {
                             <p>Available seats:{classItem.availableSeats}</p>
                         </div>
                         <figure>
-                            <img src={classItem.img} alt="Shoes" />
+                            <img src={classItem.img} alt="image" />
                         </figure>
                     </div>
                 ))}

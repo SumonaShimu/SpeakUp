@@ -104,7 +104,7 @@ const Classes = () => {
 
                 {approvedClasses.map((item) => (
                     <div key={item._id} className={`card card-side flex-col lg:flex-row shadow-xl ${item.availableSeats === 0 && 'bg-red-200'}`}>
-                        <img src={item.img} className="block w-40 h-40 rounded-xl m-5 object-cover" />
+                        <img src={item.img} alt='image' className="block w-40 h-40 rounded-xl m-5 object-cover" />
                         <div className="card-body w-1/2 flex">
 
                             <div>

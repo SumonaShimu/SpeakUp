@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import useRole from '../hooks/useRole';
 import Headings from '../Headings';
 import { AuthContext } from '../providers/AuthProvider';
-
+import { VscThreeBars } from "react-icons/vsc";
 const Dashboard = () => {
     const { role } = useRole();
     const { user, logOut } = useContext(AuthContext)
@@ -11,7 +11,9 @@ const Dashboard = () => {
         <div className="drawer lg:drawer-open min-h-screen">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">
+                    <VscThreeBars></VscThreeBars>
+                </label>
                 <Outlet></Outlet>
             </div>
             <div className="drawer-side">
