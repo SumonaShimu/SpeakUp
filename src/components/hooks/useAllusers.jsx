@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import useAxiosSecure from './useAxiosSecure';
+import { AuthContext } from '../providers/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 
 const useAllusers = () => {
+    const { user, loading } = useContext(AuthContext)
     const [axiosSecure] = useAxiosSecure();
+    const { refetch, data: users = [] } = useQuery({
+        queryKey: [user],
+        queryFn: async () => {
+            const res = await axiosSecure(`/users`)
+            return res.data;
+        },
+    })
 
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axiosSecure.get('/users');
-                setUsers(response.data);
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-            }
-        };
-        fetchData();
-    }, [axiosSecure]);
-    console.log(users)
-    return {users};
+    return [users, refetch]
+   
 };
 
 export default useAllusers;
