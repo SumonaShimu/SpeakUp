@@ -4,11 +4,12 @@ import { useState } from "react";
 import useAxiosSecure from "./../components/hooks/useAxiosSecure";
 import './CheckoutForm.css'
 import { AuthContext } from "../components/providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const CheckoutForm = (item) => {
-    console.log(item.item)
-    const {name,price,classId}=item.item;
+    console.log('check out: ', item.item)
+    const { _id, name, price, classId } = item.item;
     //const price=20.5;
     const stripe = useStripe();
     const elements = useElements();
@@ -31,7 +32,7 @@ const CheckoutForm = (item) => {
 
 
     const handleSubmit = async (event) => {
-        console.log(price,'item', name)
+        console.log(price, 'item', name)
         event.preventDefault();
 
         if (!stripe || !elements) {
@@ -86,7 +87,7 @@ const CheckoutForm = (item) => {
                 transactionId: paymentIntent.id,
                 price,
                 classId,
-                class:name,
+                class: name,
                 date: new Date(),
                 status: 'paid',
                 //item details
@@ -96,9 +97,31 @@ const CheckoutForm = (item) => {
                     console.log(res.data);
                     if (res.data.result.insertedId) {
                         // display confirm
-                        console.log('payment confirmed')
+                        console.log('payment posted in db')
                     }
                 })
+            axiosSecure.delete(`/carts/${_id}`)
+                .then(res => {
+                    console.log('deleted res', res.data);
+                    if (res.data.deletedCount > 0) {
+                        refetch();
+                        Swal.fire(
+                            'Deleted!',
+                            'from cart',
+                            'success'
+                        )
+                    }
+                })
+                axiosSecure.patch(`/classes/${classId}`)
+                .then(response => {
+                  // Handle the response data
+                  const updatedClass = response.data.class;
+                  console.log('Updated Class:', updatedClass);
+                })
+                .catch(error => {
+                  // Handle any errors
+                  console.error('Error:', error);
+                });
         }
 
 

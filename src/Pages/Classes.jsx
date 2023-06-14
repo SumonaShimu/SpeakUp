@@ -13,8 +13,7 @@ const Classes = () => {
     const [axiosSecure] = useAxiosSecure();
     const [classes, setClasses] = useState([]);
     const { user } = useContext(AuthContext)
-    const [cart] = useCart();
-    const [payments] = usePayments();
+    const [cart,refetch] = useCart();
     const location = useLocation()
     const navigate = useNavigate();
     const { role } = useRole();
@@ -33,24 +32,23 @@ const Classes = () => {
     }, [axiosSecure, user]);
 
     const approvedClasses = classes.filter(item => item.status === 'approved')
-    console.log('payments', payments)
     console.log('cart', cart)
     const handleSelect = item => {
         console.log('from handle select', item);
         const { _id, name, price, img } = item;
 
-        //handle duplicate select, duplicate enrollment
+        //handle duplicate select
         const alreadySelected = cart.find(cartItem => cartItem.classId === item._id)
-        const isPaid = payments.find(payment => payment.classId === item._id)
-        console.log(alreadySelected,isPaid)
+        //const isPaid = payments.find(payment => payment.classId === item._id)
         if (alreadySelected) {
             toast('The class id already selected')
             return;
         }
-        else if (isPaid) {
-            toast.error('This class is already enrolled!')
-            return;
-        }
+        // //duplicate enrollment
+        // else if (isPaid) {
+        //     toast.error('This class is already enrolled!')
+        //     return;
+        // }
 
         if (user && user.email) {
             const cartItem = {
@@ -69,6 +67,7 @@ const Classes = () => {
                 .then(response => {
                     const data = response.data;
                     if (data.insertedId) {
+                        refetch();
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
