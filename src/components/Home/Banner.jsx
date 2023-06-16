@@ -38,19 +38,19 @@ const Banner = () => {
     ];
 
     return (
-        <Parallax bgImage={'https://img.freepik.com/premium-photo/abstract-planet-against-background-flags-world_476363-2825.jpg?w=1060'} strength={500} className="min-h-[90vh] w-full" >
-       
+        <Parallax bgImage={'https://img.freepik.com/premium-photo/abstract-planet-against-background-flags-world_476363-2825.jpg?w=1060'} strength={500} className="min-h-[100vh] w-full" >
+
             {/* <div className="hero-overlay"></div> */}
             <Fade duration={3000} delay={500}>
-            <div className="text-center py-5 md:py-10">
-                <div className="max-w-md banner-text mx-auto">
-                    <h1 className="mb-3 text-5xl font-bold leading-relaxed">Speak the World</h1>
-                    {/* <p className="mb-5 text-sm font-bold text-slate-500">{bannerTexts[currentText].content} </p> */}
-                    <p className="mb-5 text-sm font-bold text-slate-500">
-                        Learn Any Language and <TypingComponent /></p>
-                    <button className="btn btn-primary my-10">Get Started</button>
+                <div className="text-center py-5 md:py-10">
+                    <div className="max-w-md banner-text mx-auto">
+                        <h1 className="mb-3 text-5xl font-bold leading-relaxed">Speak the World</h1>
+                        {/* <p className="mb-5 text-sm font-bold text-slate-500">{bannerTexts[currentText].content} </p> */}
+                        <p className="mb-5 text-sm font-bold text-slate-500">
+                            Learn Any Language and <TypingComponent /></p>
+                        <button className="btn btn-primary my-10">Get Started</button>
+                    </div>
                 </div>
-            </div>
             </Fade>
 
         </Parallax>
