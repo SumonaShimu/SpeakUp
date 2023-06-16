@@ -8,6 +8,7 @@ import useRole from '../components/hooks/useRole';
 import useCart from '../components/hooks/useCart';
 import { toast } from 'react-toastify';
 import usePayments from '../components/hooks/usePayments';
+import { Slide } from 'react-awesome-reveal';
 
 const Classes = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -104,7 +105,9 @@ const Classes = () => {
 
                 {approvedClasses.map((item) => (
                     <div key={item._id} className={`card card-side flex-col lg:flex-row shadow-xl ${item.availableSeats === 0 && 'bg-red-200'}`}>
+                        <Slide direction='right' duration={2000} triggerOnce>
                         <img src={item.img} alt='image' className="block w-40 h-40 rounded-xl m-5 object-cover" />
+                        </Slide>
                         <div className="card-body w-1/2 flex">
 
                             <div>

@@ -9,8 +9,8 @@ import Banner2 from './Banner2';
 const Home = () => {
     return (
         <div className=''>
-            {/* <Banner></Banner> */}
-            <Banner2></Banner2>
+            <Banner></Banner>
+            {/* <Banner2></Banner2> */}
             <Subbanner></Subbanner>
             <PopuClass></PopuClass>
             <PopuInstructor></PopuInstructor>

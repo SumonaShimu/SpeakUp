@@ -3,6 +3,7 @@ import useAxiosSecure from '../components/hooks/useAxiosSecure';
 import useAllusers from '../components/hooks/useAllusers';
 import Headings from '../components/Headings';
 import Swal from 'sweetalert2';
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 const ManageUsers = () => {
     const [users, refetch] = useAllusers();
@@ -41,14 +42,13 @@ const ManageUsers = () => {
                 {/* head */}
                 <thead>
                     <tr>
-                    
                         <th>Image</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Grnder</th>
-        
                         <th>Role</th>
                         <th>Action</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,12 +64,15 @@ const ManageUsers = () => {
                             </td>
                             <td>{item.name}</td>
                             <td>{item.email}</td>
-                            
+
                             <td>{item.gender}</td>
                             <td>{item.role}</td>
                             <th className='flex flex-col'>
                                 <button onClick={() => changeStatus('admin', item._id)} className="btn btn-success btn-sm" disabled={item.role === 'admin'}>Make Admin</button>
                                 <button onClick={() => changeStatus('instructor', item._id)} className="btn bg-red-400 btn-sm" disabled={item.role === 'instructor'}>Make instructor</button>
+                            </th>
+                            <th>
+                                <button className="btn btn-circle bg-red-300"><RiDeleteBin5Line className='text-lg'></RiDeleteBin5Line></button>
                             </th>
                         </tr>
                     )

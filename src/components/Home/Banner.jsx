@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import TypingComponent from './TypingComponent';
+import { Fade } from 'react-awesome-reveal';
+import { Parallax } from 'react-parallax';
 
 const Banner = () => {
     const [currentText, setCurrentText] = useState(0);
@@ -13,30 +16,44 @@ const Banner = () => {
 
     const bannerTexts = [
         {
-            heading: "Language Courses For You",
-            content: "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."
+            heading: "Speak the World",
+            content: "Learn Languages, Expand Horizons"
         },
         {
-            heading: "Learn German in 60 days",
-            content: "Twee echo park celiac YOLO dreamcatcher bushwick. Pitchfork fam tousled sustainable. Twee echo park celiac YOLO dreamcatcher bushwick. Pitchfork fam tousled sustainable."
+            heading: "Language Mastery Starts Here",
+            content: "Transform Your Communication Skills"
         },
         {
-            heading: "Become fluent in English",
-            content: "Tote bag trust fund tacos organic four dollar toast kickstarter pork belly meggings fingerstache. Tote bag trust fund tacos fund tacos organic four dollar toast kickstarter pork belly meggings fingerstache."
+            heading: "Breaking Barriers through Language",
+            content: "Learn, Adapt, Thrive"
+        },
+        {
+            heading: "Unlock the World",
+            content: "Learn Any Language, Anywhere"
+        },
+        {
+            heading: "Discover the Power of Words",
+            content: "Learn Languages, Unleash Potential"
         }
     ];
 
     return (
-        <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://raw.githubusercontent.com/SumonaShimu/Language-images/main/banner.jpg)' }}>
-            <div className="hero-overlay bg-black bg-opacity-50"></div>
-            <div className="hero-content text-center text-white">
-                <div className="max-w-md banner-text">
-                    <h1 className="mb-5 text-5xl font-bold">{bannerTexts[currentText].heading}</h1>
-                    <p className="mb-5">{bannerTexts[currentText].content}</p>
-                    <button className="btn btn-primary">Get Started</button>
+        <Parallax bgImage={'https://img.freepik.com/premium-photo/abstract-planet-against-background-flags-world_476363-2825.jpg?w=1060'} strength={500} className="min-h-[90vh] w-full" >
+       
+            {/* <div className="hero-overlay"></div> */}
+            <Fade duration={3000} delay={500}>
+            <div className="text-center py-5 md:py-10">
+                <div className="max-w-md banner-text mx-auto">
+                    <h1 className="mb-3 text-5xl font-bold leading-relaxed">Speak the World</h1>
+                    {/* <p className="mb-5 text-sm font-bold text-slate-500">{bannerTexts[currentText].content} </p> */}
+                    <p className="mb-5 text-sm font-bold text-slate-500">
+                        Learn Any Language and <TypingComponent /></p>
+                    <button className="btn btn-primary my-10">Get Started</button>
                 </div>
             </div>
-        </div>
+            </Fade>
+
+        </Parallax>
     );
 };
 

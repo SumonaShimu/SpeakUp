@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Headings from '../components/Headings';
 import useAxiosSecure from '../components/hooks/useAxiosSecure';
+import { Slide } from 'react-awesome-reveal';
 
 const Instructors = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -22,15 +23,16 @@ const Instructors = () => {
     const instructors = users.filter(user => user.role === 'instructor')
 
     return (
-        <div className='min-h-screen pb-10'>
+        <div className='min-h-screen pb-10 maxw'>
             <Headings title={'All Instructors'} sub={'See all of our heros'}></Headings>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-2 lg:gap-4 mx-auto">
 
                 {instructors.map((item) => (
                     <div key={item._id} className="card card-side flex-col lg:flex-row shadow-xl">
-                        <img src={item.photo} className="block w-40 h-40 rounded-xl m-5" />
+                        <Slide direction='right' duration={2000} triggerOnce>
+                            <img src={item.photo} className="block w-40 h-40 rounded-xl m-5" />
+                        </Slide>
                         <div className="card-body w-1/2 flex">
-
                             <div>
                                 <h2 className="text-xl">{item.name}</h2>
                                 <h5 className='text-primary text-sm'>Instructor</h5>

@@ -6,11 +6,12 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
+import { Fade} from 'react-awesome-reveal';
 
 const Subbanner = () => {
   return (
-    <div className="relative flex justify-center items-center ">
-      <div className="w-2/3 md:w-2/5 bg-[#aaaaaa98] mt-[-100px] p-5 rounded-xl">
+    <Fade direction='up' duration={2000} triggerOnce className="relative flex justify-center items-center ">
+      <div className="w-2/3 md:w-2/5 bg-[#aaaaaa98] mt-[-50px] p-5 rounded-xl">
         <Swiper
           effect={"coverflow"}
           grabCursor={true}
@@ -66,7 +67,7 @@ const Subbanner = () => {
 
         </Swiper>
       </div>
-    </div>
+    </Fade>
   );
 };
 
