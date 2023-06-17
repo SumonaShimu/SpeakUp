@@ -29,7 +29,7 @@ const PopuClass = () => {
                 <Headings title={'Popular Classes'} sub={'Highest number of students enrolled'}></Headings>
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-4">
                     {popularClasses.map((classItem) => (
-                        <Slide direction='right' duration={2000} key={classItem._id} triggerOnce>
+                        <Slide direction='up' duration={2000} key={classItem._id} triggerOnce>
                         <div className="card shadow-xl text-center">
                             <div className="card-body">
                                 <h2 className="card-title text-primary text-2xl mx-auto">{classItem.name}</h2><hr />

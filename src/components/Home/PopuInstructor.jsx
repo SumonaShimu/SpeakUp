@@ -30,10 +30,11 @@ const PopuInstructor = () => {
             <div className="grid md:grid-cols-2 grid-cols-1 gap-2 lg:gap-4 mx-auto">
 
                 {popularInstructors.map((item) => (
-                    <div key={item._id} className="card card-side flex-col lg:flex-row shadow-xl">
-                        <Slide direction='right' duration={2000} triggerOnce>
+                    <Slide key={item._id}  direction='up' duration={2000} triggerOnce>
+                    <div className="card card-side flex-col lg:flex-row shadow-xl">
+                
                             <img src={item.photo} className="block w-40 h-40 rounded-xl m-5" />
-                        </Slide>
+                    
                         <div className="card-body w-1/2 flex">
 
                             <div>
@@ -46,6 +47,7 @@ const PopuInstructor = () => {
                             </div>
                         </div>
                     </div>
+                    </Slide>
                 ))}
             </div>
         </div>

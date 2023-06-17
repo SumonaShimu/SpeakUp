@@ -14,9 +14,9 @@ const Whyus = () => {
                     <Why title={'Exclusive Learning Materials'} desc={'Our learning materials include text with multimedia on all areas of the curriculum.'} icon={BsRocket}></Why>
                     <Why title={'Career Upgrade'} desc={'Learning a new language is a fascinating thing that can lead to great opportunities.'} icon={BsTrophy}></Why>
                 </div>
-                <Slide direction='down' duration={2000} triggerOnce>
+                <Slide direction='up' duration={2000} triggerOnce>
                     <div className='md:flex items-center h-full'>
-                        <img src="https://i.ibb.co/vjYh9rv/confused-businessman-cartoon-character-1473-162-removebg-preview.png" className="mx-auto" /> 
+                        <img src="https://i.ibb.co/98D07S8/pngtree-cartoon-portrait-thinking-image-2299538-removebg-preview.png" className="mx-auto" /> 
                         {/* <img src="https://content.presentermedia.com/content/animsp/00008000/8159/back_and_forth_questions_md_nwm_v2.gif" alt="" className="mx-auto w-3/4"  /> */}
                     </div>
                 </Slide>
